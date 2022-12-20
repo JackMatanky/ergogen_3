@@ -1,0 +1,240 @@
+points:
+  key:
+    padding: cy
+    tags:
+      1u: true
+    footprints:
+      choc_hotswap:
+        type: choc
+        nets:
+          from: =column_net
+          to: GND
+        params:
+          keycaps: true
+          reverse: true
+          hotswap: true
+      choc:
+        type: choc
+        anchor:
+          rotate: 180
+        nets:
+          from: =column_net
+          to: GND
+        params:
+          keycaps: true
+          reverse: true
+  zones:
+    matrix:
+      rows:
+        bottom:
+        home:
+        top:
+      columns:
+        pinky:
+          spread: cx
+          rotate: 0
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 1, 0, 1]
+              column_net: P8 # Front
+            home:
+              bind: [0, 1, 0, 1]
+              column_net: P5 # Front
+            top:
+              bind: [0, 1, 0, 1]
+              column_net: P2 # Front
+        ring:
+          spread: cx
+          stagger: cx/2
+          rotate: 0
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 0, 0, 0]
+              column_net: P14 # Back
+            home:
+              bind: [0, 0, 0, 0]
+              column_net: P18 # Back
+            top:
+              bind: [0, 1, 0, 1]
+              column_net: P20 # Back
+        middle:
+          spread: cx
+          stagger: cx/3
+          rotate: 0
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 1, 0, 1]
+              column_net: P7 # Front
+            home:
+              bind: [0, 1, 0, 1]
+              column_net: P4 # Front
+            top:
+              bind: [0, 1, 0, 1]
+              column_net: P0 # Front
+          key:
+            shift: [0.2, 0]
+        index:
+          spread: cx
+          stagger: -cx/3
+          rotate: 0
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 1, 0, 0]
+              column_net: P15 # Back
+            home:
+              bind: [0, 0, 0, 0]
+              column_net: P19 # Back
+            top:
+              bind: [1.025, 1, 0, 1]
+              column_net: P21 # Back
+        inner:
+          spread: cx
+          stagger: -cx/6
+          rotate: 0
+          origin: [0, -17]
+          rows:
+            bottom:
+              bind: [16.5, 21, 0, 0] # 16.5 for the micro controller height
+              # 20.5 for the micro controller's width
+              column_net: P6 # Front
+            home:
+              bind: [4.5, 4.75, 0, 1] # 4.5 for the reset switch
+              column_net: P3 # Front
+            top:
+              bind: [0, 1, 0, 1]
+              column_net: P1 # Front
+    thumbfan:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [3, -21]
+      rows:
+        home:
+      columns:
+        inner:
+          rotate: -7.5
+          rows:
+            home:
+              bind: [10, 12, 0, 4]
+              column_net: P9
+              tags:
+                1u: false
+                15u: true
+        home:
+          spread: 1.25cx
+          stagger:
+          rotate: -15
+          origin: [-9, -9.5]
+          rows:
+            home:
+              bind: [0, 1, 0, 0]
+              column_net: P10
+              tags:
+                1u: true
+                15u: false
+
+outlines:
+  exports:
+    raw:
+      - type: keys
+        side: left
+        size: [1cx - 0.5, 1cx -0.5]
+      - type: rectangle
+        size: [20.35, 30.75]
+        anchor:
+          ref: matrix_index_bottom
+          rotate: -35.2
+          shift: [13, -25]
+    cutout:
+      - type: outline
+        name: raw
+        fillet: 2
+    keycap_outlines:
+      - type: keys
+        side: left
+        size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        bound: false
+        tags: [1u]
+    keycap_outlines15:
+      - type: keys
+        side: left
+        size: [1.5cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        bound: false
+        tags: [15u]
+    preview: [keycap_outlines, keycap_outlines15]
+
+pcbs:
+  lazy_ferris:
+    outlines:
+      main:
+        outline: cutout
+    footprints:
+      promicro:
+        type: promicro_pretty
+        anchor:
+          ref: matrix_inner_home
+          shift: [20.25, -9]
+          rotate: -90
+        params:
+          orientation: down
+      pcm12: # power switch
+        type: pcm12
+        anchor:
+          ref: matrix_inner_bottom
+          shift: [22.75, -13]
+          rotate: 54.8
+        nets:
+          from: pos
+          to: RAW
+        params:
+          reverse: true
+      # via3: # rightmost via for power switch
+      #   type: via
+      #   anchor:
+      #     ref: matrix_inner_bottom
+      #     shift: [5, -31]
+      #   nets:
+      #     net: RAW # left side on bottom; right side on front
+      # via4: # leftmost via for power switch
+      #   type: via
+      #   anchor:
+      #     ref: matrix_inner_bottom
+      #     shift: [2, -29]
+      #   nets:
+      #     net: pos # right side on bottom; left side on front
+      # via5:
+      #   type: via
+      #   anchor:
+      #     ref: matrix_inner_bottom
+      #     shift: [20, -11]
+      #   nets:
+      #     net: GND
+      # via6:
+      #   type: via
+      #   anchor:
+      #     ref: matrix_inner_bottom
+      #     shift: [20, -15]
+      #   nets:
+      #     net: RST
+      b3u1000p: # reset button
+        type: b3u1000p
+        nets:
+          r1: RST
+          r2: GND
+        anchor:
+          ref: matrix_inner_home
+          shift: [11.25, 10]
+          rotate: 270
+        params:
+          reverse: true
+      bat: # ? power switch
+        type: bat
+        nets:
+          neg: GND
+        anchor:
+          ref: matrix_inner_bottom
+          shift: [10, -11]
+          rotate: 0

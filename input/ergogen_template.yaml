@@ -1,0 +1,268 @@
+points:
+  key:
+    padding: cy
+    tags: 
+      1u: true
+    footprints:
+        choc_hotswap:
+          type: choc
+          nets:
+            from: =column_net
+            to: GND
+          params:
+              keycaps: true
+              reverse: true
+              hotswap: true
+        choc:
+          type: choc
+          anchor:
+            rotate: 180
+          nets:
+            from: =column_net
+            to: GND
+          params:
+              keycaps: true
+              reverse: true
+  zones:
+    matrix:  # A unique key for each zone which will be used to refer to it
+      anchor: # Optional - Anchor to position the zone 
+        ref: <point reference> # Optional - Reference to another point to anchor to
+        orient: <num> # default = 0
+        shift: [x, y] # default = [0, 0]
+        rotate: <num> # default = 0
+        affect: <string> # default = xyr - Specifies which axis are affected by this anchor 
+      rows:
+        bottom:
+        home:
+        top:
+      columns: 
+        pinky:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+          rows:
+            bottom:
+              bind: [0,0,3,1] #top, right, bottom, left
+              column_net: P15
+              name: name_override # default = a concatenation of zone, column, and row
+              shift: [x, y] # default = [0, 0]
+              rotate: num # default = 0
+              padding: num # default = 19
+              skip: boolean # default = false
+              asym: left | right | both # default = both
+              mirror: <arbitrary key-level data>
+            home:
+              bind: [0,0,3,1]
+              column_net: P16
+            top:
+              bind: [0,0,3,1]
+              column_net: P17
+        ring:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+            rows:
+            bottom:
+              bind: [0,0,3,1]
+              column_net: P12
+            home:
+              bind: [0,0,3,1]
+              column_net: P13
+            top:
+              bind: [0,0,3,1]
+              column_net: P14
+        middle:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+          rows:
+            bottom:
+              bind: [0,0,3,1]
+              column_net: P9
+            home:
+              bind: [0,0,3,1]
+              column_net: P10
+            top:
+              bind: [0,0,3,1]
+              column_net: P11
+        index:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+          rows:
+            bottom:
+              bind: [0,0,3,1]
+              column_net: P6
+            home:
+              bind: [0,0,3,1]
+              column_net: P7
+            top:
+              bind: [0,0,3,1]
+              column_net: P8
+        inner:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+          rows:
+            bottom:
+              bind: [0,0,3,1]
+              column_net: P3
+            home:
+              bind: [0,0,3,1]
+              column_net: P4
+            top:
+              bind: [0,0,3,1]
+              column_net: P5
+    thumbfan:  # A unique key for each zone which will be used to refer to it
+      anchor: # Optional - Anchor to position the zone 
+        ref: <point reference> # Optional - Reference to another point to anchor to
+        orient: <num> # default = 0
+        shift: [x, y] # default = [0, 0]
+        rotate: <num> # default = 0
+        affect: <string> # default = xyr - Specifies which axis are affected by this anchor 
+      rows:
+        home:
+      columns: 
+        out:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+          rows:
+            home:
+              column_net: P2
+              tags: 
+                1u: false
+                15u: true
+        home:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0] 
+          rows:
+            home:
+              column_net: P1
+              tags: 
+                1u: false
+                15u: true
+        in:
+          stagger: <num> # default = 0
+          spread: <num> # default = 19
+          rotate: <num> # default = 0
+          origin: [x, y] # relative to center of column's first key, default = [0, 0]
+          rows:
+            home:
+              column_net: P0
+              tags: 
+                1u: false
+                15u: true
+
+outlines:
+  exports:
+    raw: 
+      - type: keys
+        side: left
+        size: [1cx - 0.5 , 1cx -0.5]
+      - type: rectangle
+        size: [96.5, 40]
+        anchor:
+          ref: board_index_home
+          rotate: -25
+          shift: [-49.5, -12]
+    cutout:
+      - type: outline
+        name: raw
+        fillet: 2
+    keycap_outlines:
+      - type: keys
+        side: left
+        size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        bound: false    
+        tags: [1u]       
+    keycap_outlines15:
+      - type: keys
+        side: left
+        size: [1.5cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        bound: false    
+        tags: [15u]       
+    preview:
+        [keycap_outlines,keycap_outlines15]
+
+pcbs:
+  3x5p3:
+    outlines:
+      board:
+        outline: cutout
+      keycaps:
+        outline: preview
+        layer: Eco1.User
+    footprints:
+      promicro:
+        type: promicro_pretty
+        anchor:
+          ref: matrix_pinkie_home
+          shift: [-17, -29.5]
+          rotate: 50
+      pcm12:
+        type: pcm12
+        anchor:
+          ref: thumbfan_home_home
+          shift: [-28, -13.5]
+          rotate: -110
+        nets:
+          from: pos  
+          to: RAW
+        params:
+          reverse: true 
+      via3:
+        type: via
+        anchor: 
+          ref: thumbfan_home_home
+          shift: [3,10]
+        nets: 
+          net: RAW 
+      via4:
+        type: via
+        anchor: 
+          ref: thumbfan_home_home
+          shift: [-3,10]
+        nets: 
+          net: pos 
+      via5:
+        type: via
+        anchor: 
+          ref: thumbfan_in_home
+          shift: [3,20]
+        nets: 
+          net: GND 
+      via6:
+        type: via
+        anchor: 
+          ref: thumbfan_in_home
+          shift: [-3,20]
+        nets: 
+          net: RST 
+      b3u1000p:
+        type: b3u1000p
+        nets:
+          r1: RST  
+          r2: GND
+        anchor:
+          ref: thumbfan_mid_home
+          shift: [-14, 23]
+          rotate: -110
+        params:
+          reverse: true 
+      bat:
+        type: bat
+        nets: 
+          neg: GND
+        anchor:
+          ref: thumbfan_mid_home
+          shift: [12.5, 57]
+          rotate: -20

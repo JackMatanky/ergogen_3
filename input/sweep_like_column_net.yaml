@@ -1,0 +1,98 @@
+# `U` is a predefined unit of measure that means 19.05mm, which is MX spacing
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          rows:
+            bottom:
+              padding: U
+              column_net: P2
+            home:
+              padding: U
+              column_net: P15
+            top:
+              padding: U
+              column_net: P7
+        ring:
+          stagger: 0.66U
+          rows:
+            bottom:
+              padding: U
+              column_net: P3
+            home:
+              padding: U
+              column_net: P14
+            top:
+              padding: U
+              column_net: P18
+        middle:
+          stagger: 0.25U
+          rows:
+            bottom:
+              padding: U
+              column_net: P4
+            home:
+              padding: U
+              column_net: P16
+            top:
+              padding: U 
+              column_net: P19       
+        index:
+          stagger: -0.25U
+          rows:
+            bottom:
+              padding: U
+              column_net: P5
+            home:
+              padding: U
+              column_net: P10
+            top:
+              padding: U
+              column_net: P20
+        inner:
+          stagger: -0.15U
+          rows:
+            bottom:
+              padding: U
+              column_net: P6
+            home:
+              padding: U
+              column_net: P1
+            top:
+              padding: U 
+              column_net: P21
+    thumb:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0.66U, -1.25U]
+        rotate: -10
+      columns:
+        tucky:
+          key.name: thumb_tucky
+          column_net: P8
+        reachy:
+          spread: U
+          rotate: -15
+          origin: [-0.5U, -0.5U]
+          key.name: thumb_reachy
+          column_net: P9
+
+  key:
+    footprints:
+      - type: mx
+        nets:
+          from: GND
+          to: =name
+        params:
+          reverse: true
+          keycaps: true
+pcbs:
+  simple_split:
+    footprints:
+      - type: promicro
+        anchor:
+          - ref: matrix_inner_home
+            shift: [1U, 0.5U]
+            rotate: -90
+
