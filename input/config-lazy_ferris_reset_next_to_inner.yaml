@@ -36,7 +36,9 @@ points:
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 1, 0, 1]
+              bind: [0, 40, 0, 1]
+              # 40 to right to connect
+              # the bottom pinky to thumbfan
               column_net: P8 # Front
             home:
               bind: [0, 1, 0, 1]
@@ -98,11 +100,14 @@ points:
           origin: [0, -17]
           rows:
             bottom:
-              bind: [16.5, 21, 0, 0] # 16.5 for the micro controller height
-              # 20.5 for the micro controller's width
+              bind: [17.5, 21.5, 0, 0]
+              # 16.5 for the micro controller height
+              # 21.5 for the micro controller's width
               column_net: P6 # Front
             home:
-              bind: [4.5, 4.75, 0, 1] # 4.5 for the reset switch
+              bind: [7, 4.7, 0, 1]
+              # 7 for the reset switch height
+              # 4.7 for the reset switch height
               column_net: P3 # Front
             top:
               bind: [0, 1, 0, 1]
@@ -142,11 +147,13 @@ outlines:
       - type: keys
         side: left
         size: [1cx - 0.5, 1cx -0.5]
+        # rectangle outline between thumbfan
+        # home and bottom of micro controller
       - type: rectangle
-        size: [20.35, 30.75]
+        size: [20.35, 31.75]
         anchor:
           ref: matrix_index_bottom
-          rotate: -35.2
+          rotate: -36.6
           shift: [13, -25]
     cutout:
       - type: outline
@@ -155,13 +162,15 @@ outlines:
     keycap_outlines:
       - type: keys
         side: left
-        size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        size: [1cx - 0.5, 1cy - 0.5]
+        # Choc keycaps are 17.5 x 16.5
         bound: false
         tags: [1u]
     keycap_outlines15:
       - type: keys
         side: left
-        size: [1.5cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+        size: [1.5cx - 0.5, 1cy - 0.5]
+        # Choc keycaps are 17.5 x 16.5
         bound: false
         tags: [15u]
     preview: [keycap_outlines, keycap_outlines15]
@@ -172,11 +181,11 @@ pcbs:
       main:
         outline: cutout
     footprints:
-      promicro:
+      promicro: # microcontroller
         type: promicro_pretty
         anchor:
           ref: matrix_inner_home
-          shift: [20.25, -9]
+          shift: [20.75, -8]
           rotate: -90
         params:
           orientation: down
@@ -191,6 +200,25 @@ pcbs:
           to: RAW
         params:
           reverse: true
+      b3u1000p: # reset button
+        type: b3u1000p
+        nets:
+          r1: RST
+          r2: GND
+        anchor:
+          ref: matrix_inner_home
+          shift: [11.25, 12]
+          rotate: 270
+        params:
+          reverse: true
+      bat: # pitch connector holes
+        type: bat
+        nets:
+          neg: GND
+        anchor:
+          ref: matrix_inner_bottom
+          shift: [11, -11]
+          rotate: 0
       # via3: # rightmost via for power switch
       #   type: via
       #   anchor:
@@ -219,22 +247,3 @@ pcbs:
       #     shift: [20, -15]
       #   nets:
       #     net: RST
-      b3u1000p: # reset button
-        type: b3u1000p
-        nets:
-          r1: RST
-          r2: GND
-        anchor:
-          ref: matrix_inner_home
-          shift: [11.25, 10]
-          rotate: 270
-        params:
-          reverse: true
-      bat: # ? power switch
-        type: bat
-        nets:
-          neg: GND
-        anchor:
-          ref: matrix_inner_bottom
-          shift: [10, -11]
-          rotate: 0

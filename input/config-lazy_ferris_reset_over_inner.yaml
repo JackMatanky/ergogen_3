@@ -36,9 +36,7 @@ points:
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 40, 0, 1]
-              # 40 to right to connect
-              # the bottom pinky to thumbfan
+              bind: [0, 42, 0, 1]
               column_net: P8 # Front
             home:
               bind: [0, 1, 0, 1]
@@ -91,7 +89,7 @@ points:
               bind: [0, 0, 0, 0]
               column_net: P19 # Back
             top:
-              bind: [1.025, 1, 0, 1]
+              bind: [0.75, 6, 0, 1]
               column_net: P21 # Back
         inner:
           spread: cx
@@ -100,16 +98,13 @@ points:
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 0, 0, 0]
+              bind: [16.5, 20.5, 0, 0]
               column_net: P6 # Front
             home:
-              bind: [5, 21.2, 12, 1]
-              # 5 for the microcontroller's top
-              # 12 for the microcontroller's bottom
-              # 21.2 for the microcontroller's width
+              bind: [0, 0, 0, 1]
               column_net: P3 # Front
             top:
-              bind: [0, 1, 0, 1]
+              bind: [0, 1, 0.5, 1]
               column_net: P1 # Front
     thumbfan:
       anchor:
@@ -147,13 +142,11 @@ outlines:
         side: left
         size: [1cx - 0.5, 1cx -0.5]
       - type: rectangle
-        # rectangle outline between thumbfan
-        # home and bottom of micro controller
-        size: [20.35, 31.5]
+        size: [20.35, 30.75]
         anchor:
           ref: matrix_index_bottom
-          rotate: -28
-          shift: [15.25, -25]
+          rotate: -35.2
+          shift: [13, -25]
     cutout:
       - type: outline
         name: raw
@@ -161,15 +154,13 @@ outlines:
     keycap_outlines:
       - type: keys
         side: left
-        size: [1cx - 0.5, 1cy - 0.5]
-        # Choc keycaps are 17.5 x 16.5
+        size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
         bound: false
         tags: [1u]
     keycap_outlines15:
       - type: keys
         side: left
-        size: [1.5cx - 0.5, 1cy - 0.5]
-        # Choc keycaps are 17.5 x 16.5
+        size: [1.5cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
         bound: false
         tags: [15u]
     preview: [keycap_outlines, keycap_outlines15]
@@ -180,46 +171,25 @@ pcbs:
       main:
         outline: cutout
     footprints:
-      promicro: # microcontroller
+      promicro:
         type: promicro_pretty
         anchor:
           ref: matrix_inner_home
-          shift: [20.25, -4]
+          shift: [19.5, -9]
           rotate: -90
         params:
           orientation: down
       pcm12: # power switch
         type: pcm12
         anchor:
-          ref: thumbfan_home_home
-          shift: [7, 15]
-          rotate: 85
+          ref: matrix_inner_bottom
+          shift: [22.75, -13]
+          rotate: 54.8
         nets:
           from: pos
           to: RAW
         params:
           reverse: true
-      b3u1000p: # reset button
-        type: b3u1000p
-        nets:
-          r1: RST
-          r2: GND
-        anchor:
-          ref: thumbfan_home_home
-          shift: [7.5, 21.5]
-          # keep 6.5 space between
-          # power switch and reset button
-          rotate: -5
-        params:
-          reverse: true
-      bat: # pitch connector holes
-        type: bat
-        nets:
-          neg: GND
-        anchor:
-          ref: thumbfan_home_home
-          shift: [-1, 11.5]
-          rotate: 270
       # via3: # rightmost via for power switch
       #   type: via
       #   anchor:
@@ -248,3 +218,22 @@ pcbs:
       #     shift: [20, -15]
       #   nets:
       #     net: RST
+      b3u1000p: # reset button
+        type: b3u1000p
+        nets:
+          r1: RST
+          r2: GND
+        anchor:
+          ref: matrix_inner_top
+          shift: [-6.25, 10.75]
+          rotate: 180
+        params:
+          reverse: true
+      bat: # ? power switch
+        type: bat
+        nets:
+          neg: GND
+        anchor:
+          ref: matrix_inner_bottom
+          shift: [11, -11]
+          rotate: 0
