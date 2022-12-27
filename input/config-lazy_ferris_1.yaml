@@ -179,6 +179,9 @@ pcbs:
     outlines:
       main:
         outline: cutout
+      keycaps:
+        outline: preview
+        layer: Eco1.User
     footprints:
       promicro: # microcontroller
         type: promicro_pretty
