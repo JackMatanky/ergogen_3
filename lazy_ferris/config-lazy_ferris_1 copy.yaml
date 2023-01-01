@@ -223,6 +223,19 @@ pcbs:
           ref: thumbfan_home_home
           shift: [-1, 11.5]
           rotate: 270
+      puck:
+        type: tentingpuck
+        anchor:
+          ref: matrix_middle_home
+          shift: [0, -8]
+          rotate: 60
+        params:
+          reverseSilks: false
+          centerHole: false
+          northHole: true
+          westHole: true
+          southHole: false
+          eastHole: true
       # via3: # rightmost via for power switch
       #   type: via
       #   anchor:
