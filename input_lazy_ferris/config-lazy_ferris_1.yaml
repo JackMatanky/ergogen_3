@@ -31,7 +31,7 @@ points:
         top:
       columns:
         pinky:
-          spread: cx
+          spread: 1.025 * cx
           rotate: 0
           origin: [0, -17]
           rows:
@@ -41,60 +41,60 @@ points:
               # the bottom pinky to thumbfan
               column_net: P8 # Front
             home:
-              bind: [0, 1, 0, 1]
+              bind: [0, 3, 0, 1]
               column_net: P5 # Front
             top:
-              bind: [0, 1, 0, 1]
+              bind: [0, 3, 0, 1]
               column_net: P2 # Front
         ring:
-          spread: cx
+          spread: 1.025 * cx
           stagger: cx/2
           rotate: 0
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 0, 0, 0]
+              bind: [0, 3, 0, 0]
               column_net: P14 # Back
             home:
-              bind: [0, 0, 0, 0]
+              bind: [0, 3, 0, 0]
               column_net: P18 # Back
             top:
-              bind: [0, 1, 0, 1]
+              bind: [0, 3, 0, 1]
               column_net: P20 # Back
         middle:
-          spread: cx
+          spread: 1.025 * cx
           stagger: cx/3
           rotate: 0
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 1, 0, 1]
+              bind: [0, 3, 0, 1]
               column_net: P7 # Front
             home:
-              bind: [0, 1, 0, 1]
+              bind: [0, 3, 0, 1]
               column_net: P4 # Front
             top:
-              bind: [0, 1, 0, 1]
+              bind: [0, 3, 0, 1]
               column_net: P0 # Front
           key:
             shift: [0.2, 0]
         index:
-          spread: cx
+          spread: 1.025 * cx
           stagger: -cx/3
           rotate: 0
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 1, 0, 0]
+              bind: [0, 3, 0, 0]
               column_net: P15 # Back
             home:
-              bind: [0, 0, 0, 0]
+              bind: [0, 3, 0, 0]
               column_net: P19 # Back
             top:
-              bind: [1.025, 1, 0, 1]
+              bind: [1.025, 3, 0, 1]
               column_net: P21 # Back
         inner:
-          spread: cx
+          spread: 1.025 * cx
           stagger: -cx/6
           rotate: 0
           origin: [0, -17]
@@ -223,19 +223,19 @@ pcbs:
           ref: thumbfan_home_home
           shift: [-1, 11.5]
           rotate: 270
-      puck:
-        type: tentingpuck
-        anchor:
-          ref: matrix_middle_home
-          shift: [0, -8]
-          rotate: 60
-        params:
-          reverseSilks: false
-          centerHole: false
-          northHole: true
-          westHole: true
-          southHole: false
-          eastHole: true
+      # puck:
+      #   type: tentingpuck
+      #   anchor:
+      #     ref: matrix_middle_home
+      #     shift: [0, -8]
+      #     rotate: 60
+      #   params:
+      #     reverseSilks: false
+      #     centerHole: false
+      #     northHole: true
+      #     westHole: true
+      #     southHole: false
+      #     eastHole: true
       # via3: # rightmost via for power switch
       #   type: via
       #   anchor:
