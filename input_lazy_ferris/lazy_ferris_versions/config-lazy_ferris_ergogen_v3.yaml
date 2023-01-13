@@ -36,15 +36,15 @@ points:
           origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 40, 0, 1]
+              bind: [0, 40, .5, 1.5]
               # 40 to right to connect
               # the bottom pinky to thumbfan
               column_net: P8 # Front
             home:
-              bind: [0, 1, 0, 1]
+              bind: [0, 1, 0, 1.5]
               column_net: P5 # Front
             top:
-              bind: [0, 1, 0, 1]
+              bind: [.5, 1, 0, 1.5]
               column_net: P2 # Front
         ring:
           spread: cx
@@ -59,7 +59,7 @@ points:
               bind: [0, 0, 0, 0]
               column_net: P18 # Back
             top:
-              bind: [0, 1, 0, 1]
+              bind: [.5, 1, 0, 1]
               column_net: P20 # Back
         middle:
           spread: cx
@@ -74,7 +74,7 @@ points:
               bind: [0, 1, 0, 1]
               column_net: P4 # Front
             top:
-              bind: [0, 1, 0, 1]
+              bind: [.5, 1, 0, 1]
               column_net: P0 # Front
           key:
             shift: [0.2, 0]
@@ -91,7 +91,7 @@ points:
               bind: [0, 0, 0, 0]
               column_net: P19 # Back
             top:
-              bind: [1.025, 1, 0, 1]
+              bind: [.5, 1, 0, 1]
               column_net: P21 # Back
         inner:
           spread: cx
@@ -109,7 +109,7 @@ points:
               # 21.2 for the microcontroller's width
               column_net: P3 # Front
             top:
-              bind: [0, 1, 0, 1]
+              bind: [.5, 1.5, 0, 1]
               column_net: P1 # Front
     thumbfan:
       anchor:
@@ -122,7 +122,7 @@ points:
           rotate: -7.5
           rows:
             home:
-              bind: [10, 12, 0, 4]
+              bind: [10, 12, .5, 5.5]
               column_net: P9
               tags:
                 1u: false
@@ -134,7 +134,7 @@ points:
           origin: [-9, -9.5]
           rows:
             home:
-              bind: [0, 1, 0, 0]
+              bind: [0, 1.5, .5, 0]
               column_net: P10
               tags:
                 1u: true
@@ -223,19 +223,19 @@ pcbs:
           ref: thumbfan_home_home
           shift: [-1, 11.5]
           rotate: 270
-      puck:
-        type: tentingpuck
-        anchor:
-          ref: matrix_middle_home
-          shift: [0, -8]
-          rotate: 60
-        params:
-          reverseSilks: false
-          centerHole: false
-          northHole: true
-          westHole: true
-          southHole: false
-          eastHole: true
+      # puck:
+      #   type: tentingpuck
+      #   anchor:
+      #     ref: matrix_middle_home
+      #     shift: [0, -8]
+      #     rotate: 60
+      #   params:
+      #     reverseSilks: false
+      #     centerHole: false
+      #     northHole: true
+      #     westHole: true
+      #     southHole: false
+      #     eastHole: true
       # via3: # rightmost via for power switch
       #   type: via
       #   anchor:

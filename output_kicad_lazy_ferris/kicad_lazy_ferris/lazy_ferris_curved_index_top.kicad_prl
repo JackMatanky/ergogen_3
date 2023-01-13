@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 42,
+    "active_layer": 44,
     "active_layer_preset": "All Layers",
     "auto_track_width": true,
     "hidden_nets": [],
@@ -66,7 +66,7 @@
     "zone_display_mode": 0
   },
   "meta": {
-    "filename": "lazy_ferris-rounded_final.kicad_prl",
+    "filename": "lazy_ferris_curved_index_top.kicad_prl",
     "version": 3
   },
   "project": {
